@@ -1,0 +1,64 @@
+package chapter7b;
+
+import java.util.Scanner;
+
+public class Grades {
+
+	static int grades[];
+	static Scanner scanner = new Scanner(System.in);
+
+	public static void main(String args[]) {
+
+		System.out.println("Please enter the Number of Grades");
+		// Scanner scanner = new Scanner(System.in);
+		grades = new int[scanner.nextInt()]; // length of the array
+
+		getGrades();
+		calculateSum();
+		System.out.println("Average:" + calcultaeAverage());
+		System.out.println("Highest:" + getHighest());
+		System.out.println("Loweswt" + getLowest());
+	}
+
+	private static int getHighest() {
+		int highest = grades[0];
+		for (int grade : grades) {
+			if (grade > highest) {
+				highest = grade;
+			}
+		}
+		return highest;
+	}
+
+	public static int getLowest() {
+		int lowest = grades[0];
+		for (int grade : grades) {
+			if (grade < lowest) {
+				lowest = grade;
+			}
+		}
+		return lowest;
+	}
+
+	public static double calcultaeAverage() {
+		return calculateSum() / grades.length;
+
+	}
+
+	public static int calculateSum() {
+		int sum = 0;
+		//for(type VariablesName:arrayName)
+		for (int grade : grades) { // ??
+			sum = sum + grade;
+		}
+		return sum;
+	}
+
+	public static void getGrades() {
+		for (int i = 0; i < grades.length; i++) {
+			System.out.println("Enter grade #" + (i + 1));
+			grades[i] = scanner.nextInt();
+		}
+
+	}
+}
